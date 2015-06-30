@@ -31,8 +31,11 @@ def donuts(count):
 # so 'spring' yields 'spng'. However, if the string length
 # is less than 2, return instead the empty string.
 def both_ends(s):
-  # +++your code here+++
-  return
+  if len(s) == 1:
+    return  ''
+  elif s > 1:
+    newString = s[0]+s[1]+s[-2]+s[-1]
+    return  newString
 
 # C. fix_start
 # Given a string s, return a string
@@ -47,8 +50,8 @@ def fix_start(s):
   # +++your code here+++
   firstChar = s[0]
   s = s.replace(s[0],'*')
-  
-  return firstChar+s[1:]
+  newString = firstChar+s[1:]
+  return newString
 
 
 # D. MixUp
@@ -60,7 +63,9 @@ def fix_start(s):
 # Assume a and b are length 2 or more.
 def mix_up(a, b):
   # +++your code here+++
-return
+  stringA = b[0]+b[1]+a[2:]
+  stringB = a[0]+a[1]+b[2:]
+  return stringA+" "+stringB
 # D. verbing
 # Given a string, if its length is at least 3,
 # add 'ing' to its end.
@@ -70,7 +75,12 @@ return
 # Return the resulting string.
 def verbing(s):
   # +++your code here+++
-return
+  if len(s) >= 3 and s[-3]+s[-2]+s[-1] != 'ing':
+    return s + 'ing'
+  elif len(s) >= 3 and s[-3]+s[-2]+s[-1] == 'ing':
+    return s + 'ly'
+  else:
+    return s
 
 # E. not_bad
 # Given a string, find the first appearance of the
@@ -102,7 +112,28 @@ def not_bad(s):
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
   # +++your code here+++
-return
+  stringA = len(a)
+  stringB = len(b)
+
+  if stringA % 2 == 0:
+    lengthA = stringA/2
+    stringAFront = lengthA
+    stringABack = lengthA
+  else:
+    lengthA = stringA/2
+    stringAFront = lengthA+1
+    stringABack = lengthA
+
+  if stringB % 2 == 0:
+    lengthB = stringB/2
+    stringBFront = lengthB
+    stringBBack = lengthB
+  else:
+    lengthB = stringB/2
+    stringBFront = lengthB+1
+    stringBBack = lengthB
+  newString = a[:stringAFront]+b[:stringBFront]+a[-stringABack:]+b[-stringBBack:]
+  return newString
 
 
 # Provided simple test() function used in main() to print
